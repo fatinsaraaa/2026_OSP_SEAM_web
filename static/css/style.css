@@ -1,0 +1,260 @@
+/* =========================================================
+   Snack Passport — shared styles (owner: Sara)
+   Page-specific styles go in pages.css (owner: Anu)
+   Fonts: add this to <head> in base.html:
+   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   ========================================================= */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  /* brand */
+  --green: #0B4A2F;
+  --green-dark: #06301E;
+  --yellow: #F2B33D;
+  --yellow-dark: #E09E1F;
+
+  /* neutrals */
+  --bg: #F7F6F1;
+  --surface: #FFFFFF;
+  --hover: #EBEDE2;
+  --border: #C9CCBF;
+  --text: #17211B;
+  --text-muted: #4E5A52;
+
+  /* country tags: background / text */
+  --my-bg: #FBE6BF;  --my-text: #7A4600;   /* Malaysia */
+  --mn-bg: #D9E6F6;  --mn-text: #173F72;   /* Mongolia */
+  --mm-bg: #F5D7CC;  --mm-text: #8A2A12;   /* Myanmar */
+
+  /* shape */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --shadow: 0 10px 24px rgba(23, 33, 27, .10);
+
+  /* type */
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-heading: 'Bricolage Grotesque', sans-serif;
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+h1 { font-size: 44px; }
+h2 { font-size: 28px; }
+h3 { font-size: 20px; }
+
+a { color: var(--green); }
+a:hover { color: var(--green-dark); }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.muted { color: var(--text-muted); }
+
+/* ---------- 3. Header & nav (base.html) ---------- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--hover);
+}
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+.nav {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+.nav:hover { background: var(--hover); color: var(--text); }
+.nav-on, .nav-on:hover { background: var(--green); color: #FFFFFF; }
+
+.site-footer {
+  margin-top: 64px;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---------- 4. Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary { background: var(--green); color: #FFFFFF; }
+.btn-primary:hover { background: var(--green-dark); color: #FFFFFF; }
+
+.btn-accent { background: var(--yellow); color: var(--text); }
+.btn-accent:hover { background: var(--yellow-dark); color: var(--text); }
+
+.btn-ghost { background: var(--surface); color: var(--text); border-color: var(--text); }
+.btn-ghost:hover { background: var(--hover); color: var(--text); }
+
+/* ---------- 5. Cards ---------- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .15s, box-shadow .15s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+/* big white box used for login / signup / forms */
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+/* ---------- 6. Forms ---------- */
+.field { margin-bottom: 18px; }
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font: inherit;
+  color: var(--text);
+}
+textarea { min-height: 140px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.hint { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+/* ---------- 7. Chips, tags, pagination ---------- */
+.chip {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+}
+.chip-on { background: var(--text); border-color: var(--text); color: #FFFFFF; }
+
+/* country tag: <span class="tag tag-malaysia">Malaysia</span> */
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+}
+.tag-malaysia { background: var(--my-bg); color: var(--my-text); }
+.tag-mongolia { background: var(--mn-bg); color: var(--mn-text); }
+.tag-myanmar  { background: var(--mm-bg); color: var(--mm-text); }
+
+/* status badge on product photos */
+.st {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+}
+.st-sale { background: #FFFFFF; color: var(--green); }
+.st-res  { background: var(--yellow); color: var(--text); }
+.st-sold { background: var(--text); color: #FFFFFF; }
+
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 32px; }
+.pg {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  cursor: pointer;
+}
+.pg-on { background: var(--green); border-color: var(--green); color: #FFFFFF; }
+.pg:disabled { opacity: .4; cursor: not-allowed; }
+
+/* ---------- 8. Mobile ---------- */
+@media (max-width: 720px) {
+  h1 { font-size: 32px; }
+  .site-header .container { flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+  .panel { padding: 22px; }
+}
